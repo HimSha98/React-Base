@@ -19,11 +19,14 @@
   "license": "ISC",
   "author": "HimSha98",
   "type": "commonjs",
-  "main": "App.js",
   "scripts": {
     "test": "jest"
   },
   "devDependencies": {
     "parcel": "^2.16.0"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   }
 }
