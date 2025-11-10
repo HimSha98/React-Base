@@ -1,0 +1,29 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is very first react setup with npm",
+  "keywords": [
+    "Himanshu",
+    "Sharma",
+    "React",
+    "Setup"
+  ],
+  "homepage": "https://github.com/HimSha98/React-Base#readme",
+  "bugs": {
+    "url": "https://github.com/HimSha98/React-Base/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HimSha98/React-Base.git"
+  },
+  "license": "ISC",
+  "author": "HimSha98",
+  "type": "commonjs",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.0"
+  }
+}
