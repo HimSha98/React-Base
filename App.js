@@ -5,28 +5,31 @@ import ReactDOM from "react-dom/client";
  * ReactElement(Object) => HTML(BROWSER UNDERSTANDS)
  * 
  * **/
-const parent = React.createElement('div',{id: "parent"}, 
-    [
-        React.createElement('div', {id: "child"}, 
-            [
-                React.createElement('h1', {key: "h1a"}, "I am Himanshu Sharma."),
-                React.createElement('h2', {key: "h2a"}, "I am h2 tag!")
-            ]
-        ),
-        React.createElement('div', {id: "child"}, 
-            [
-                React.createElement('h1', {key: "h1b"}, "I am h1 tag!"),
-                React.createElement('h2', {key: "h2b"}, "I am h2 tag!")
-            ]
-        )
-    ]
-);
+const Header = () => {
+    return (
+        <div className="header">
+            <div className="logo-container">
+                <img src="https://dcassetcdn.com/design_img/2183979/550819/550819_11742653_2183979_4cdbe29a_image.jpg" alt="food-app-logo" className="logo" />
+            </div>
+            <div className="nav-items">
+                <ul>
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Contact Us</li>
+                    <li>Cart</li>
+                </ul>
+            </div>
+        </div>
+    );
+}
 
-// heading here is basically a react element ie a javascript object
-const heading = React.createElement('h1', {id: "heading"} , "HELLO WORLD FROM REACT & TEAM!");
+const AppLayout = () => {
+    return (
+        <div className="app">    
+            <Header />
+        </div>
+    );
+}
 
-console.log(parent);
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-root.render(parent);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<AppLayout />);
