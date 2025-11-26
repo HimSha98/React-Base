@@ -22,3 +22,27 @@
     margin: 10px;
     font-size: 24px;
 }
+
+.res-card {
+    width: 200px;
+    height: auto;
+    padding: 7.5px;
+    background: rgb(222, 207, 207);
+    border-radius: 5px;
+    margin: 10px 5px 0 0;
+}
+
+.res-card:hover {
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.res-logo {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.res-container {
+    display: flex;
+}
