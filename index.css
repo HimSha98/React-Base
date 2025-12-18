@@ -52,5 +52,15 @@
 .filter-btn {
     margin: 10px;
     cursor: pointer;
-    
+}
+
+.shimmer-container {
+    display: flex;
+}
+
+.shimmer-card {
+    width: 200px;
+    height: 450px;
+    margin: 20px;
+    background-color: rgb(222, 207, 207);;
 }
