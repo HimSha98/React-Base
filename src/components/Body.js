@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 
@@ -21,31 +21,38 @@ const Body = () => {
     // console.log(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants[0]);
   }
 
-  if (list.length === 0) {
-    return <Shimmer />;
-  }
+  // if (list.length === 0) {
+  //   return <Shimmer />;
+  // }
 
-  return (
-    <div className="body">
-      <div className="filter">
-        <button className="filter-btn"
-        onClick={() => {
-          const filteredList = list.filter((res) => res.info.avgRating > 3.5);
-          setList(filteredList);
-          console.log(filteredList);
-        }}
-        >
-          Top Rated Restaurant
-        </button>
+  return list.length === 0 ? < Shimmer /> : 
+    (
+      <div className="body">
+        <div className="filter">
+          <div className="search">
+            <input type="text" className="search-box" />
+            <button>Search</button>
+          </div>
+          <div>
+            <button className="filter-btn"
+            onClick={() => {
+              const filteredList = list.filter((res) => res.info.avgRating > 3.5);
+              setList(filteredList);
+              console.log(filteredList);
+            }}
+            >
+              Top Rated Restaurant
+            </button>
+          </div>
+        </div>
+        <div className="res-container">
+          {/* Restaurant Card Container */}
+          {
+            list.map(( restaurant ) => <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />)
+          }
+        </div>
       </div>
-      <div className="res-container">
-        {/* Restaurant Card Container */}
-        {
-          list.map(( restaurant ) => <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />)
-        }
-      </div>
-    </div>
-  );
+    )
 };
 
 export default Body;

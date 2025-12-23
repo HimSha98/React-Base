@@ -64,3 +64,17 @@
     margin: 20px;
     background-color: rgb(222, 207, 207);;
 }
+
+.login-btn {
+    cursor: pointer;
+    padding: 0, 20px;
+}
+
+.filter {
+    display: flex;
+    margin-top: 20px;
+}
+
+.search {
+    margin-top: 10px;
+}
