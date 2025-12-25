@@ -4,7 +4,9 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
 
-  const [list, setList] = useState([]);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -16,28 +18,42 @@ const Body = () => {
 
     const json = await data.json();
 
-    setList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     console.log(json);
-    // console.log(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants[0]);
   }
 
-  // if (list.length === 0) {
-  //   return <Shimmer />;
-  // }
-
-  return list.length === 0 ? < Shimmer /> : 
+  return listOfRestaurants.length === 0 ? < Shimmer /> : 
     (
       <div className="body">
         <div className="filter">
           <div className="search">
-            <input type="text" className="search-box" />
-            <button>Search</button>
+            <input
+              type="text"
+              className="search-box"
+              value={searchText}
+              onChange={(e) => {
+                setSearchText(e.target.value);
+              }}
+            />
+            <button
+              onClick={() => {
+                console.log(searchText);
+                const filteredRest = listOfRestaurants.filter(
+                  (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                );
+
+                setListOfRestaurants(filteredRest);
+              }}
+            >
+              Search
+            </button>
           </div>
           <div>
             <button className="filter-btn"
             onClick={() => {
-              const filteredList = list.filter((res) => res.info.avgRating > 3.5);
-              setList(filteredList);
+              const filteredList = listOfRestaurants.filter((res) => res.info.avgRating > 3.5);
+              setFilteredRestaurants(filteredList);
               console.log(filteredList);
             }}
             >
@@ -48,7 +64,7 @@ const Body = () => {
         <div className="res-container">
           {/* Restaurant Card Container */}
           {
-            list.map(( restaurant ) => <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />)
+            filteredRestaurants.map(( restaurant ) => <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />)
           }
         </div>
       </div>
