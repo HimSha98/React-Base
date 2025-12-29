@@ -43,7 +43,7 @@ const Body = () => {
                   (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
                 );
 
-                setListOfRestaurants(filteredRest);
+                setFilteredRestaurants(filteredRest);
               }}
             >
               Search
